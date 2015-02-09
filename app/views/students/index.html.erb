@@ -1,19 +1,27 @@
 <h1>Student Dashboard</h1>
-<section>
+
+
 <table>
-  <tbody>
-    <aside>
-    <tr><td>
-      <% student = Student.find_by_id(session[:student_id]) %>
-      <%= student.name %></td></tr>
-    </aside>
-    <article>
-    <tr>
-        <%= display_grades(Grade.get_assignments_for_student_email( student.student_email )) %>
-    </tr>
-  </article>
-  </tbody>
+ <tbody>
+     <% Student.get_all_children_for_student_id( session[:student_id] ).each do |student| %>
+       <tr><td><%=  student.name  %></td></tr>
+       <tr>
+         <% Achievement.get_assignments_for_student_email( student.student_email ).each do |achievement| %>
+           <tr>
+             <td><%= achievement.assignment_name %></td>
+             <td><%= achievement.score %></td>
+             <td><%= achievement.due_on %></td>
+             <td><%= link_to 'Edit', edit_achievement_path(achievement) %></td>
+             <td><%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           </tr>
+         <% end %>
+       </tr>
+     <% end %>
+ </tbody>
 </table>
-</section>
+
+<%= link_to 'Create new student', new_student_path %><br>
+<%= link_to 'Create new student', new_student_path %><br>
+<%= link_to 'Create new parent', new_parent_path %><br>
 
 <%= link_to 'Change your password', edit_student_path(Student.find_by(id: session[:student_id] )) %>
