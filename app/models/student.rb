@@ -3,7 +3,7 @@ class Student < ActiveRecord::Base
 
   has_many :grades
   has_many :parents
-
+  has_and_belongs_to_many :achievements
   belongs_to :teacher
 
   def self.get_all_children_for_teacher_id( teacher_id )
