@@ -2,12 +2,21 @@ class StudentsController < ApplicationController
   before_action :check_logged_in
 
   def index
-    @student = Student.all
+    @students = Student.all
     @achievements = Achievement.all
   end
 
   def new
     @student = Student.new
+  end
+
+  def edit_achievements
+    @student = Student.find(params[:id])
+    @achievements = Achievement.all
+  end
+
+  def update_achievements
+
   end
 
   def edit

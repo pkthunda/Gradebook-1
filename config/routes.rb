@@ -1,17 +1,6 @@
 Rails.application.routes.draw do
-  resources :achievements do
-    member do
-      get 'edit_students'
-      post 'edit_students'
-      post 'update_students'
-    end
-    collection do
-      get 'dashboard'
-    end
-  end
 
 
-  resources :achievements
 
   get 'login/login'
   post 'login/login'
@@ -24,7 +13,15 @@ Rails.application.routes.draw do
 
   resources :parents
   resources :teachers
-  resources :students
+  resources :achievements
+
+  resources :students do
+    member do
+      get 'edit_achievements'
+      post 'edit_achievements'
+      post 'update_achievements'
+    end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
