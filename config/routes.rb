@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   resources :students do
     member do
       get 'edit_achievements'
-      post 'edit_achievements'
       post 'update_achievements'
     end
   end

@@ -7,17 +7,17 @@ class AchievementsController < ApplicationController
     @achievements = Achievement.all
   end
 
-  def edit_students
-    @students = Student.all
-  end
-
-  def update_students
-    @achievement.students = []
-    params[:students].keys.each do |student_id|
-      @achievement.students << Student.find_by_id(student_id)
-    end
-    redirect_to edit_students_achievement_path
-  end
+  # def edit_students
+  #   @students = Student.all
+  # end
+  #
+  # def update_students
+  #   @achievement.students = []
+  #   params[:students].keys.each do |student_id|
+  #     @achievement.students << Student.find_by_id(student_id)
+  #   end
+  #   redirect_to edit_students_achievement_path
+  # end
 
   # GET /achievements/1
   # GET /achievements/1.json

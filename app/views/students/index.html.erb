@@ -3,10 +3,10 @@
 
 <table>
  <tbody>
-     <% Student.get_all_children_for_student_id( session[:student_id] ).each do |student| %>
+     <% @students_children.each do |student| %>
        <tr><td><%=  student.name  %></td></tr>
        <tr>
-         <% Achievement.get_assignments_for_student_email( student.student_email ).each do |achievement| %>
+         <% Achievement.get_assignments_for_student_email(student.student_email).each do |achievement| %>
            <tr>
              <td><%= achievement.name %></td>
              <td><%= achievement.point_value %></td>
@@ -22,5 +22,5 @@
 <%= link_to 'Create new student', new_student_path %><br>
 <%= link_to 'Create new student', new_student_path %><br>
 <%= link_to 'Create new parent', new_parent_path %><br>
-
-<%= link_to 'Change your password', edit_student_path(Student.find_by(id: session[:student_id] )) %>
+<%= link_to 'Home', :root %>
+<% #link_to 'Change your password', edit_student_path(Student.find_by(id: session[:student_id] )) %>

@@ -2,8 +2,9 @@ class StudentsController < ApplicationController
   before_action :check_logged_in
 
   def index
-    @students = Student.all
+    @student = Student.all
     @achievements = Achievement.all
+    @students_children = Student.get_all_children_for_student_id( session[:student_id] )
   end
 
   def new
@@ -16,8 +17,15 @@ class StudentsController < ApplicationController
   end
 
   def update_achievements
-
+    @student = Student.find(params[:id])
+    @student.achievements = []
+    params[:achievements].keys.each do |achievement_id|
+      @student.achievements << Achievement.find_by_id(achievement_id)
+    end
+    redirect_to edit_achievements_student_path
   end
+
+
 
   def edit
   end
