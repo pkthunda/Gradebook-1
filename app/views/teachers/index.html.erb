@@ -3,10 +3,10 @@
 
 <table>
  <tbody>
-     <% Student.get_all_children_for_teacher_id( session[:teacher_id] ).each do |student| %>
+     <% @teachers_students.each do |student| %>
        <tr><td><%=  student.name  %></td></tr>
        <tr>
-         <% Achievement.get_assignments_for_student_email( student.student_email ).each do |achievement| %>
+         <% @achievements.each do |achievement| %>
            <tr>
              <td><%= achievement.name %></td>
              <td><%= achievement.point_value %></td>

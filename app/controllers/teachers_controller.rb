@@ -4,6 +4,8 @@ class TeachersController < ApplicationController
   def index
     @teachers = Teacher.all
     @achievements = Achievement.all
+    # @achievements = Achievement.get_assignments_for_student_email( student.student_email )
+    @teachers_students = Student.get_all_children_for_teacher_id( session[:teacher_id] )
   end
 
   def new

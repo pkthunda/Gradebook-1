@@ -36,4 +36,15 @@ class Student < ActiveRecord::Base
     end
     return pair
   end
+
+  # def get_all_children_for_student_id(student_id)
+  #   achievements = []
+  #   self.all.each do |achievement|
+  #     if achievement.student_id == student_id
+  #       achievement << achievement
+  #     end
+  #   end
+  #   return achievements
+  # end
+
 end

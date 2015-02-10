@@ -16,7 +16,7 @@ class AchievementsController < ApplicationController
     params[:students].keys.each do |student_id|
       @achievement.students << Student.find_by_id(student_id)
     end
-    redirect_to edit_students_photo_path
+    redirect_to edit_students_achievement_path
   end
 
   # GET /achievements/1
