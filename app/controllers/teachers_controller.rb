@@ -1,7 +1,6 @@
 class TeachersController < ApplicationController
   before_action :check_logged_in
 
-
   def index
     @teachers = Teacher.all
     @achievements = Achievement.all

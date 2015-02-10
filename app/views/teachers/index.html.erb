@@ -8,9 +8,8 @@
        <tr>
          <% Achievement.get_assignments_for_student_email( student.student_email ).each do |achievement| %>
            <tr>
-             <td><%= achievement.assignment_name %></td>
-             <td><%= achievement.score %></td>
-             <td><%= achievement.due_on %></td>
+             <td><%= achievement.name %></td>
+             <td><%= achievement.point_value %></td>
              <td><%= link_to 'Edit', edit_achievement_path(achievement) %></td>
              <td><%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
            </tr>
