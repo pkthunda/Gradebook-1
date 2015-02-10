@@ -13,8 +13,21 @@ class TeachersController < ApplicationController
     @achievement = Achievement.new
   end
 
-  def edit
+  def edit_achievements
+    @student = Student.find(params[:id])
+    @achievements = Achievement.all
+  end
 
+  def update_achievements
+    @student = Student.find(params[:id])
+    @student.achievements = []
+    params[:achievements].keys.each do |achievement_id|
+      @student.achievements << Achievement.find_by_id(achievement_id)
+    end
+    redirect_to edit_achievements_student_path
+  end
+
+  def edit
   end
 
   def create
